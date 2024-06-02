@@ -148,18 +148,7 @@ const person1Input = document.getElementById('person1');
         }
 
         function generateLovePercentage(person1, person2) {
-            if (person1 == "Sander" || person2 == "Sander") {
-               if (person2 == "Fenna" || person1 == "Fenna") {
-                   return Math.floor(Math.random() * 10); // High chance
-               }
-            }
-
-        
-            if (lowChanceNames.some(name => person1.toLowerCase().includes(name.toLowerCase())) || lowChanceNames.some(name => person2.toLowerCase().includes(name.toLowerCase()))) {
-                return Math.floor(Math.random() * 10); // High chance
-            }
             
-
             const random = Math.floor(Math.random() * 100);
             if (random < 60) {
 
