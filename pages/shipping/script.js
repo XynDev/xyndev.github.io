@@ -28,7 +28,7 @@ const person1Input = document.getElementById('person1');
                 if (lovePercentage < 10) {
                     outputDiv.innerHTML = `<p>${generateBadResponse(person1, person2)}</p><p>Love Percentage: ${lovePercentage}%</p>`;
                 } else {
-                    outputDiv.innerHTML = `<p>${response}</p><p>Love Percentage: ${lovePercentage}%</p><p>Pickup Line: ${pickupLine}</p>`;
+                    outputDiv.innerHTML = `<p>${response}</p><p>Love Percentage: ${lovePercentage}%</p>`;
                 }
             } else {
                 outputDiv.textContent = 'Please enter both names.';
@@ -149,6 +149,7 @@ const person1Input = document.getElementById('person1');
 
         function generateLovePercentage(person1, person2) {
             
+
             const random = Math.floor(Math.random() * 100);
             if (random < 60) {
 

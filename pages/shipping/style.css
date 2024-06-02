@@ -67,18 +67,13 @@ button:hover {
     padding: 30px;
     background-color: #ffedf5;
     border-radius: 20px;
-    height: 200px;
-    font-size: 1.2rem; /* Decreased font size */
-    line-height: 1.4; /* Decreased line height */
+    min-height: 150px;
+    font-size: 1.5rem;
+    line-height: 1.8;
     text-align: center;
     position: relative;
     color: #ff69b4;
     text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    overflow: auto; /* Added overflow property */
 }
 
 #output::before {
@@ -113,7 +108,7 @@ button:hover {
     }
 
     #output {
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 20px;
     }
 }
