@@ -3,6 +3,7 @@ const askButton = document.getElementById('ask');
 const outputDiv = document.getElementById('output');
 const h1 = document.querySelector('h1');
 const body = document.body
+const container = document.querySelector('.container');
 const responses = [
     "It is certain.",
     "It is decidedly so.",
