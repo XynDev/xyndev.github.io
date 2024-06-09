@@ -1,2 +1,0 @@
-# xyndev.github.io
-Website
