@@ -1,0 +1,265 @@
+:root {
+    --font-primary: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Symbols';
+    --font-display: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Symbols';
+    --font-headline: 'ABC Ginto Nord', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Symbols';
+    --font-code: 'gg mono', 'Source Code Pro', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+}
+
+body, html {
+    font-family: var(--font-primary);
+    background-color: #313338;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #dcddde;
+}
+
+.discord-app {
+    display: flex;
+    height: 100vh;
+}
+
+.server-list {
+    width: 72px;
+    background-color: #1e1f22;
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.server-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #36393f;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: border-radius 0.15s ease-out;
+}
+
+.server-icon:hover {
+    border-radius: 16px;
+    background-color: #5865f2;
+}
+
+.channel-list {
+    width: 240px;
+    background-color: #2b2d31;
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-header {
+    padding: 12px 16px;
+    height: 48px;
+    box-shadow: 0 1px 0 rgba(4,4,5,0.2);
+    display: flex;
+    align-items: center;
+}
+
+.channel-name {
+    color: #f2f3f5;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.channels {
+    padding: 0 8px;
+    overflow-y: auto;
+}
+
+.channel-category {
+    color: #989aa2;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 16px 8px 4px;
+    text-transform: uppercase;
+}
+
+.channel {
+    color: #989aa2;
+    font-size: 16px;
+    padding: 6px 8px;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.channel:hover {
+    background-color: #35373c;
+    color: #dcddde;
+}
+
+.channel.active {
+    background-color: #404249;
+    color: #fff;
+}
+
+.user-area {
+    height: 52px;
+    background-color: #232428;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    height: 48px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 0 rgba(4,4,5,0.2);
+    z-index: 1;
+}
+
+#chatbox {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: #313338;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 16px;
+    padding: 2px 0;
+    position: relative;
+}
+
+.message:hover {
+    background-color: #2e3035;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.message-content {
+    flex-grow: 1;
+}
+
+.message-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 8px;
+    color: #f2f3f5;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: #a3a6aa;
+}
+
+.message-text {
+    color: #dcddde;
+    line-height: 1.375rem;
+    white-space: pre-wrap;
+}
+
+.input-area {
+    margin: 0 16px 24px;
+}
+
+#userInput {
+    width: 100%;
+    background-color: #383a40;
+    border: none;
+    border-radius: 8px;
+    color: #dcddde;
+    padding: 11px 16px;
+    font-size: 16px;
+    resize: none;
+}
+
+#userInput::placeholder {
+    color: #72767d;
+}
+
+.edit-buttons {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.message:hover .edit-buttons {
+    display: block;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    color: #72767d;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: #dcddde;
+}
+
+.user-settings {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #2b2d31;
+}
+
+.user-settings input {
+    margin-right: 10px;
+    background-color: #383a40;
+    border: none;
+    color: #dcddde;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.user-settings button {
+    background-color: #5865f2;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-settings button:hover {
+    background-color: #4752c4;
+}
+
