@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord-like Chat</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=gg+sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="discord-app">
+        <div class="server-list">
+            <div class="server-icon">S</div>
+        </div>
+        <div class="channel-list">
+            <div class="channel-header">
+                <span class="channel-name">Custom Chat</span>
+            </div>
+            <div class="channels">
+                <div class="channel-category">Conversations</div>
+                <div class="channel active"># custom-chat</div>
+            </div>
+            <div class="user-area">
+                <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="User Avatar" class="user-avatar" id="user1Profile">
+                <span class="user-name" id="currentUsername">You</span>
+            </div>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">
+                <span class="channel-name"># custom-chat</span>
+            </div>
+            <div class="user-settings">
+                <input type="text" id="user1Name" placeholder="User 1 Name">
+                <input type="text" id="user1Avatar" placeholder="User 1 Avatar URL">
+                <input type="text" id="user2Name" placeholder="User 2 Name">
+                <input type="text" id="user2Avatar" placeholder="User 2 Avatar URL">
+                <button id="updateUsers">Update Users</button>
+            </div>
+            <div id="chatbox"></div>
+            <div class="input-area">
+                <textarea id="userInput" rows="1" placeholder="Type a message..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="userProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="profile-header">
+                <div class="profile-banner"></div>
+                <img src="" alt="User Avatar" class="profile-avatar">
+            </div>
+            <div class="profile-body">
+                <h2 class="profile-username"></h2>
+                <div class="profile-badges"></div>
+                <div class="profile-info">
+                    <h3>ABOUT ME</h3>
+                    <p class="profile-about"></p>
+                    <h3>MEMBER SINCE</h3>
+                    <p class="profile-member-since"></p>
+                    <h3>NOTE</h3>
+                    <textarea class="profile-note" placeholder="Click to add a note"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let users = JSON.parse(localStorage.getItem('users')) || [
+                { name: 'User 1', avatar: 'https://cdn.discordapp.com/embed/avatars/0.png' },
+                { name: 'User 2', avatar: 'https://cdn.discordapp.com/embed/avatars/1.png' }
+            ];
+            let currentUserIndex = 0;
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+            function saveData() {
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('messages', JSON.stringify(messages));
+            }
+
+            function getCurrentTimestamp() {
+                return new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            }
+
+            function appendMessage(user, content, timestamp = getCurrentTimestamp(), id = Date.now()) {
+                const messageHtml = `
+                    <div class="message" data-id="${id}">
+                        <img src="${user.avatar}" alt="${user.name}" class="avatar">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="username">${user.name}</span>
+                                <span class="timestamp">Today at ${timestamp}</span>
+                            </div>
+                            <div class="message-text">${content}</div>
+                        </div>
+                        <div class="edit-buttons">
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">🗑️</button>
+                        </div>
+                    </div>
+                `;
+                $('#chatbox').append(messageHtml);
+                $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+            }
+
+            function loadMessages() {
+                messages.forEach(message => {
+                    const user = users[message.userIndex];
+                    appendMessage(user, message.content, message.timestamp, message.id);
+                });
+            }
+
+            loadMessages();
+
+            $('#userInput').keypress(function(e) {
+                if (e.which == 13 && !e.shiftKey) {
+                    e.preventDefault();
+                    var userInput = $(this).val();
+                    if (userInput.trim() !== '') {
+                        const timestamp = getCurrentTimestamp();
+                        const messageId = Date.now();
+                        messages.push({ userIndex: currentUserIndex, content: userInput, timestamp: timestamp, id: messageId });
+                        appendMessage(users[currentUserIndex], userInput, timestamp, messageId);
+                        $(this).val('');
+                        currentUserIndex = (currentUserIndex + 1) % users.length;
+                        saveData();
+                    }
+                }
+            });
+
+            $(document).on('click', '.edit-btn', function(e) {
+                e.stopPropagation();
+                const messageDiv = $(this).closest('.message');
+                const messageText = messageDiv.find('.message-text');
+                const currentText = messageText.text();
+                const inputField = $('<textarea>').val(currentText);
+                messageText.html(inputField);
+                inputField.focus();
+
+                inputField.blur(function() {
+                    const newText = $(this).val();
+                    messageText.text(newText);
+                    const messageId = messageDiv.data('id');
+                    const messageIndex = messages.findIndex(msg => msg.id === messageId);
+                    if (messageIndex !== -1) {
+                        messages[messageIndex].content = newText;
+                        saveData();
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete-btn', function(e) {
+                e.stopPropagation();
+                const messageDiv = $(this).closest('.message');
+                const messageId = messageDiv.data('id');
+                messages = messages.filter(msg => msg.id !== messageId);
+                messageDiv.remove();
+                saveData();
+            });
+
+            $('#updateUsers').click(function() {
+                users[0].name = $('#user1Name').val() || users[0].name;
+                users[0].avatar = $('#user1Avatar').val() || users[0].avatar;
+                users[1].name = $('#user2Name').val() || users[1].name;
+                users[1].avatar = $('#user2Avatar').val() || users[1].avatar;
+                saveData();
+                alert('Users updated!');
+            });
+
+            // User Profile Modal
+            $('#user1Profile').click(function() {
+                const user = users[0];
+                $('.profile-avatar').attr('src', user.avatar);
+                $('.profile-username').text(user.name);
+                $('.profile-about').text('This is a sample about me text.');
+                $('.profile-member-since').text('September 1, 2023');
+                $('#userProfileModal').show();
+            });
+
+            $('.close').click(function() {
+                $('#userProfileModal').hide();
+            });
+
+            $(window).click(function(event) {
+                if (event.target == $('#userProfileModal')[0]) {
+                    $('#userProfileModal').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
