@@ -1,1 +1,4 @@
 site_name: Next Library
+site_url: https://xynterical.com
+theme:
+  name: material
