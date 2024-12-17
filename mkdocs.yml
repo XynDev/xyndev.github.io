@@ -2,3 +2,34 @@ site_name: Reaxion
 site_url: https://github.com/XynDev/xyndev.github.io
 theme:
   name: material
+  palette:
+    primary: Purple
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - content.code.copy
+    - content.code.select
+    - navigation.expand
+    - toc.follow
+    - toc.integrate 
+    - navigation.indexes 
+    
+
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - tables
+  - footnotes
+
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

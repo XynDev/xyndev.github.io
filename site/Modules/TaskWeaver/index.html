@@ -1,0 +1,783 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/XynDev/xyndev.github.io/Modules/TaskWeaver/">
+      
+      
+        <link rel="prev" href="../../Introduction/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>TaskWeaver Documentation - Reaxion</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#taskweaver-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Reaxion" class="md-header__button md-logo" aria-label="Reaxion" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Reaxion
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TaskWeaver Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Reaxion" class="md-nav__button md-logo" aria-label="Reaxion" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Reaxion
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Introduction/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TaskWeaver Documentation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    TaskWeaver Documentation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskweavernew" class="md-nav__link">
+    <span class="md-ellipsis">
+      TaskWeaver.new
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskweavercreatetask" class="md-nav__link">
+    <span class="md-ellipsis">
+      TaskWeaver:CreateTask
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskresume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task:Resume
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskpause" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task:Pause
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-task-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Task API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license-and-acknowledgments" class="md-nav__link">
+    <span class="md-ellipsis">
+      License and Acknowledgments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="taskweaver-documentation">TaskWeaver Documentation</h1>
+<p>TaskWeaver is a powerful Lua task management library designed to schedule and manage routines effectively, 
+with support for extensions and lifecycle hooks.</p>
+<hr />
+<h2 id="features">Features</h2>
+<ul>
+<li>Create, pause, resume, and stop tasks effortlessly.</li>
+<li>Extend tasks with custom extension hooks.</li>
+<li>Built-in performance options (throttling and execution time control).</li>
+<li>Error-safe, robust API with user-friendly logging.</li>
+</ul>
+<hr />
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="installation">Installation</h3>
+<p>To use TaskWeaver, include it in your project using your preferred script placement and ensure required dependencies (e.g., <code>task</code> API or equivalent threading mechanism) are available.</p>
+<p><strong>Example Folder Structure:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ProjectRoot/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── TaskWeaver.lua
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── Extensions/
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── Logger.lua
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── CustomExtension.lua
+</span></code></pre></div></p>
+<h3 id="usage-example">Usage Example</h3>
+<p>Here’s how you can use TaskWeaver in your project:</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span> <span class="n">TaskWeaver</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">Parent</span><span class="p">.</span><span class="n">TaskWeaver</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">-- Create a TaskWeaver instance</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">local</span> <span class="n">weaver</span> <span class="o">=</span> <span class="n">TaskWeaver</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">-- Create a task</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">local</span> <span class="n">myTask</span> <span class="o">=</span> <span class="n">weaver</span><span class="p">:</span><span class="n">CreateTask</span><span class="p">(</span><span class="s2">&quot;ExampleTask&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task is running!&quot;</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">task</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kr">end</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">-- Start and pause task</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">myTask</span><span class="p">:</span><span class="n">Resume</span><span class="p">()</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">task</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">myTask</span><span class="p">:</span><span class="n">Pause</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h2 id="api-reference">API Reference</h2>
+<h3 id="taskweavernew"><code>TaskWeaver.new</code></h3>
+<p><strong>Description:</strong><br />
+Creates a new TaskWeaver instance.</p>
+<p><strong>Returns:</strong><br />
+- <code>TaskWeaver</code> – An initialized TaskWeaver object.</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span> <span class="n">weaver</span> <span class="o">=</span> <span class="n">TaskWeaver</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h3 id="taskweavercreatetask"><code>TaskWeaver:CreateTask</code></h3>
+<p><strong>Description:</strong><br />
+Creates a new task and assigns it a unique name and function.</p>
+<p><strong>Signature:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">TaskWeaver</span><span class="p">:</span><span class="n">CreateTask</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">taskFunc</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">()):</span> <span class="n">Task</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong><br />
+- <code>name</code> (string) – The name of the task.<br />
+- <code>taskFunc</code> (function) – A function that defines the task logic.</p>
+<p><strong>Returns:</strong><br />
+- <code>Task</code> – The created Task object.</p>
+<p><strong>Example:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span> <span class="n">task</span> <span class="o">=</span> <span class="n">weaver</span><span class="p">:</span><span class="n">CreateTask</span><span class="p">(</span><span class="s2">&quot;PrintTask&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from Task!&quot;</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kr">end</span><span class="p">)</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="taskresume"><code>Task:Resume</code></h3>
+<p><strong>Description:</strong><br />
+Resumes a paused task or starts it for the first time.</p>
+<p><strong>Signature:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Task</span><span class="p">:</span><span class="n">Resume</span><span class="p">():</span> <span class="n">Task</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong><br />
+- <code>Task</code> – The resumed task object.</p>
+<p><strong>Example:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">task</span><span class="p">:</span><span class="n">Resume</span><span class="p">()</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="taskpause"><code>Task:Pause</code></h3>
+<p><strong>Description:</strong><br />
+Pauses the execution of a running task.</p>
+<p><strong>Signature:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Task</span><span class="p">:</span><span class="n">Pause</span><span class="p">():</span> <span class="n">Task</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong><br />
+- <code>Task</code> – The paused task object.</p>
+<p><strong>Example:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">task</span><span class="p">:</span><span class="n">Pause</span><span class="p">()</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="full-task-api">Full Task API</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Task:LoadExtension</strong></td>
+<td>Loads and registers an extension for the task.</td>
+</tr>
+<tr>
+<td><strong>Task:Then</strong></td>
+<td>Adds a callback function after task events.</td>
+</tr>
+<tr>
+<td><strong>Task:Stop</strong></td>
+<td>Stops the task and closes its coroutine.</td>
+</tr>
+<tr>
+<td><strong>Task:Bind</strong></td>
+<td>Binds a function to run during the task loop.</td>
+</tr>
+<tr>
+<td><strong>Task:Unbind</strong></td>
+<td>Removes a previously bound function.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="extensions">Extensions</h2>
+<p>TaskWeaver supports custom extensions to hook into lifecycle events like task creation, pausing, or stopping.</p>
+<p><strong>Extension Structure:</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Extension</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ExtensionName&quot;</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">onLoad</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">task</span><span class="p">)</span> <span class="p">...</span> <span class="kr">end</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">onEvent</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span> <span class="p">...</span> <span class="kr">end</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">events</span> <span class="o">=</span> <span class="p">{</span> <span class="n">onResume</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">onPause</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">},</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p><strong>Example: Logger Extension</strong><br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">local</span> <span class="n">Logger</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Logger&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">onLoad</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logger loaded for task:&quot;</span><span class="p">,</span> <span class="n">task</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="kr">end</span><span class="p">,</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">onEvent</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="n">name</span> <span class="o">..</span> <span class="s2">&quot; triggered event:&quot;</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="kr">end</span><span class="p">,</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">events</span> <span class="o">=</span> <span class="p">{</span> <span class="n">onResume</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">onPause</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">}</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p">}</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="kr">return</span> <span class="n">Logger</span>
+</span></code></pre></div></p>
+<p>To use an extension:<br />
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">myTask</span><span class="p">:</span><span class="n">LoadExtension</span><span class="p">(</span><span class="s2">&quot;Logger&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="performance-settings">Performance Settings</h2>
+<p>Optimize task behavior with these performance options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>throttleRate</strong></td>
+<td>The delay between task iterations (in seconds).</td>
+</tr>
+<tr>
+<td><strong>maxExecutionTime</strong></td>
+<td>The maximum time a task can execute before stopping (seconds).</td>
+</tr>
+</tbody>
+</table>
+<p>Set these options during task creation or dynamically update them. Example:</p>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">myTask</span><span class="p">.</span><span class="n">performanceOptions</span><span class="p">.</span><span class="n">throttleRate</span> <span class="o">=</span> <span class="mf">0.5</span>
+</span></code></pre></div>
+<hr />
+<h2 id="error-handling">Error Handling</h2>
+<p>Errors are gracefully caught using <code>pcall</code>. TaskWeaver will log issues without halting the execution of other tasks or extensions. Monitor logs to debug errors effectively:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[TaskWeaver] Task &#39;ExampleTask&#39; encountered an error: &lt;error message&gt;
+</span></code></pre></div>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extensions not loading</td>
+<td>Ensure your <code>Extensions</code> folder is named correctly.</td>
+</tr>
+<tr>
+<td>Task not resuming</td>
+<td>Verify <code>task:Resume()</code> is called only after creation or pause.</td>
+</tr>
+<tr>
+<td>Performance issues</td>
+<td>Use <code>throttleRate</code> to manage execution frequency.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="license-and-acknowledgments">License and Acknowledgments</h2>
+<p>Created by <strong>Xynterical</strong>, 2024. Licensed for educational and open-source use.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "content.code.copy", "content.code.select", "navigation.expand", "toc.follow", "toc.integrate", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
