@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: Get started
       link: /markdown-examples
+    - theme: alt
+      text: Credits
+      link: /profiles/credits
    
 
 
