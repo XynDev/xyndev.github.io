@@ -60,19 +60,6 @@ Both JavaScript and Node.js embrace the philosophy of **simplicity through unifi
 - **Faster Iteration & Innovation**  
   The flexibility of JavaScript and the performance of Node.js make it easy to rapidly develop and deploy applications.
 
-## LearnJS: Applying These Philosophies
-
-At **LearnJS**, we embrace these principles by offering:
-
-- **Modular Learning Paths**  
-  We break complex concepts into small, digestible lessons so that you never feel overwhelmed.
-
-- **Hands-On Exploration**  
-  We encourage experimentation, allowing you to learn through interactive coding exercises.
-
-- **Clarity and Simplicity**  
-  Our lessons are crafted to be beginner-friendly, ensuring that you gain knowledge effectively.
-
 ::: tip Learning Insight
 Every challenge you overcome in programming strengthens your foundation. Keep practicing, and don’t rush the process.
 :::
