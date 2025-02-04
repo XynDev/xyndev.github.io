@@ -32,7 +32,9 @@ export default defineConfig({
         text: "Beginner Node.JS",
         items: [
           { text: 'Node JS', link: '/beginner/node/basics', items: [
-            { text: 'Express', link: '/beginner/node/express'}
+            { text: 'Express', link: '/beginner/node/express', items: [
+              {text: "API Example", link: '/examples/node/express/api'}
+            ]}
           ] },
         ]
       }
