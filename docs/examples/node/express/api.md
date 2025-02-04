@@ -1,55 +1,96 @@
 ---
 title: "Express API Tutorial"
-description: "Creating your own api"
+description: "Creating your own API from scratch"
 ---
+
 # Express API Documentation
 
 ## Introduction
 
-This documentation provides an overview of an Express-based API that handles rate-limited requests for retrieving team and data information. It utilizes middleware for rate limiting and file retrieval to ensure efficient request handling.
+This tutorial is designed for beginners and students who want to learn how to build an Express API from scratch. We will cover everything from setting up the project to handling API requests efficiently with rate limiting and file retrieval.
 
-## Features
-- **Rate Limiting**: Prevents excessive requests from a single IP.
-- **Dynamic File Retrieval**: Loads JSON data dynamically from the filesystem.
-- **Versioned API**: Supports version-based requests.
-- **Tag-Based Filtering**: Removes specific objects marked with `"ignore"` tags.
-- **Modular Handler Loading**: Dynamically loads handlers from the `utility/handler` directory.
+## Prerequisites
+- Basic knowledge of JavaScript
+- Node.js installed (download from [nodejs.org](https://nodejs.org/))
+- A code editor (VS Code recommended)
+
+## Setting Up the Project
+
+1. **Initialize a Node.js project**
+   ```sh
+   mkdir express-api-tutorial && cd express-api-tutorial
+   npm init -y
+   ```
+   This will create a `package.json` file that keeps track of dependencies.
+
+2. **Set project type to ES modules**
+   Open `package.json` and add:
+   ```json
+   {
+     "type": "module"
+   }
+   ```
+   This allows us to use `import/export` instead of `require`.
+
+3. **Install dependencies**
+   ```sh
+   npm install express
+   ```
+
+4. **Project Structure**
+   ```
+   express-api-tutorial/
+   ├── helper/
+   │   ├── file.js
+   │   ├── rateLimiter.js
+   ├── utility/
+   │   ├── handler/
+   ├── server.js
+   ├── package.json
+   ├── README.md
+   ```
 
 ## API Endpoints
 
 ### `/api/information/:version/:team`
 - **Method**: GET
 - **Params**:
-  - `version`: API version (e.g., `v1`).
-  - `team`: Target team name.
-- **Query Parameters**:
-  - `option` (optional): `minimal` or `full` response.
+  - `version`: API version (e.g., `v1`)
+  - `team`: Target team name
 - **Response**:
   - A filtered list of team members with names and roles.
 
 ### `/api/data/:version/:type`
 - **Method**: GET
 - **Params**:
-  - `version`: API version (e.g., `v1`).
-  - `type`: Data type filename.
+  - `version`: API version (e.g., `v1`)
+  - `type`: Data type filename
 - **Response**:
   - The JSON content from the respective file with ignored entries removed.
 
 ## Code Overview
 
-### Express API Logic
+### Rate Limiting Middleware
 ```js
-import express from 'express';
-import { rateLimit } from '../helper/rateLimiter.js';
-import { retrieveFileContent } from '../helper/file.js';
+const requestCounts = {};
+const RATE_LIMIT = 5;
+const TIME_WINDOW = 60000;
 
-const categoryLimits = { '/api/information': 10, '/api/data': 10 };
-
-function handleAPI(req, res, handler) {
-    if (!rateLimit(req.ip, categoryLimits[req.path] || 1)) {
-        return res.status(429).send('Too many requests');
+export function rateLimit(ip) {
+    const now = Date.now();
+    
+    if (!requestCounts[ip]) {
+        requestCounts[ip] = [];
     }
-    handler(req, res);
+
+    requestCounts[ip] = requestCounts[ip].filter(timestamp => now - timestamp < TIME_WINDOW);
+
+    if (requestCounts[ip].length >= RATE_LIMIT) {
+        return false;
+    }
+
+    requestCounts[ip].push(now);
+    return true;
 }
 ```
 
@@ -95,27 +136,49 @@ function retrieveFileContent(filePath) {
 export { retrieveFileContent };
 ```
 
-### Rate Limiting Middleware
+### Express API Logic
 ```js
-const requestCounts = {};
-const RATE_LIMIT = 5;
-const TIME_WINDOW = 60000;
+import express from 'express';
+import { rateLimit } from '../helper/rateLimiter.js';
+import { retrieveFileContent } from '../helper/file.js';
 
-export function rateLimit(ip) {
-    const now = Date.now();
-    
-    if (!requestCounts[ip]) {
-        requestCounts[ip] = [];
+const categoryLimits = { '/api/information': 10, '/api/data': 10 };
+
+function handleAPI(req, res, handler) {
+    if (!rateLimit(req.ip, categoryLimits[req.path] || 1)) {
+        return res.status(429).send('Too many requests');
     }
+    handler(req, res);
+}
 
-    requestCounts[ip] = requestCounts[ip].filter(timestamp => now - timestamp < TIME_WINDOW);
+export default function (app) {
+    app.get('/api/information/:version/:team', (req, res) => handleAPI(req, res, () => {
+        const { version, team } = req.params;
+        const content = retrieveFileContent('private/data/team.json');
+        if (!content) return res.status(500).send('Data unavailable');
+        
+        const teamData = JSON.parse(content)[team];
+        if (!teamData) return res.status(404).send('Team not found');
+        
+        res.json(version === 'v1' ? teamData.map(({ name, role, Age }) => ({ name, role, age: Age })) : 'Invalid API version');
+    }));
 
-    if (requestCounts[ip].length >= RATE_LIMIT) {
-        return false;
-    }
-
-    requestCounts[ip].push(now);
-    return true;
+    app.get('/api/data/:version/:type', (req, res) => handleAPI(req, res, () => {
+        if (req.params.version !== 'v1') return res.status(400).send('Invalid API version');
+        const content = retrieveFileContent(`private/data/${req.params.type}.json`);
+        if (!content) return res.status(500).send('Data unavailable');
+        
+        try {
+            const processData = data => Array.isArray(data) ? data.map(processData) :
+                (typeof data === 'object' && data !== null && data.tag?.toLowerCase() !== 'ignore')
+                ? Object.fromEntries(Object.entries(data).filter(([key]) => key !== 'tag').map(([k, v]) => [k, processData(v)]))
+                : data;
+            
+            res.json(processData(JSON.parse(content)));
+        } catch {
+            res.status(500).send('Error processing data');
+        }
+    }));
 }
 ```
 
@@ -128,8 +191,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const handlersPath = path.join(__dirname, '../utility/handler');
+const handlersPath = path.join(__dirname, 'utility/handler');
 
 const app = express();
 
@@ -143,8 +205,6 @@ async function loadHandlers(app) {
                 if (typeof handler.default === 'function') {
                     handler.default(app);
                     console.log(`Loaded handler: ${file}`);
-                } else {
-                    console.warn(`Handler ${file} does not export a default function`);
                 }
             }
         }
@@ -161,13 +221,11 @@ app.listen(port, () => {
 });
 ```
 
-## How It Works
-1. **Rate Limiting**: The `rateLimit` function ensures that each IP can only make a limited number of requests per time window.
-2. **Handling API Requests**: The `handleAPI` function enforces rate limiting and delegates the request to a handler function.
-3. **Retrieving Data**: The `retrieveFileContent` function reads JSON data dynamically from the filesystem.
-4. **Filtering Data**: Any object marked with `"tag": "ignore"` is excluded from responses.
-5. **Handler Loading**: The `server.js` file dynamically loads all handlers from the `utility/handler` directory, making the API easily extendable.
-
 ## Conclusion
-This API is structured for efficient data retrieval while maintaining security and performance via rate limiting. It provides a scalable and modular approach for handling structured data requests.
+This tutorial provides a structured way for beginners to set up an Express API with modularity, rate limiting, and data retrieval. With this foundation, students can expand their API with additional endpoints and logic.
+
+**Next Steps:**
+- Implement authentication
+- Add database support (MongoDB, PostgreSQL, etc.)
+- Improve error handling
 
